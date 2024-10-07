@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Raptor Team Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Modal container */
+    .modal {
+      display: block; /* Show the modal by default */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5); /* Black with opacity */
+    }
+
+    /* Modal content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    /* Close button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: -10px;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      margin: 10px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .button.decline {
+      background-color: #f44336; /* Red */
+    }
+
+    .button:active {
+      transform: scale(0.98);
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 600px) {
+      .modal-content {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- The Modal -->
+  <div id="calendarModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Add Raptor Team Events to Your Calendar</h2>
+      <p>Please choose your calendar:</p>
+      <button class="button" id="appleCalendar">Apple Calendar</button>
+      <button class="button" id="googleCalendar">Google Calendar</button>
+      <button class="button decline" id="decline">Decline</button>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    var modal = document.getElementById('calendarModal');
+    var closeModal = document.getElementById('closeModal');
+    var appleBtn = document.getElementById('appleCalendar');
+    var googleBtn = document.getElementById('googleCalendar');
+    var declineBtn = document.getElementById('decline');
+
+    // Close modal on clicking 'X' or 'Decline'
+    closeModal.onclick = function() {
+      modal.style.display = 'none';
+    }
+    declineBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    // Apple Calendar button click
+    appleBtn.onclick = function() {
+      window.location.href = 'https://NKrajewski28.github.io/team-calendars/raptor.ics';
+    }
+
+    // Google Calendar button click
+    googleBtn.onclick = function() {
+      window.location.href = 'https://calendar.google.com/calendar/r?cid=' + encodeURIComponent('https://NKrajewski28.github.io/team-calendars/raptor.ics');
+    }
+
+    // Close modal if user clicks outside of it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
